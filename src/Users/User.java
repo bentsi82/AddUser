@@ -4,13 +4,14 @@
  */
 package Users;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Bentsi
  */
-public class User {
+public class User implements Serializable{
     
-    private static int countUsers;
     private String ID;
     private String Username;
     private String Password;
@@ -18,19 +19,10 @@ public class User {
     private String Phone;
     
     
-    public User()
+    public User(String id, String name, String mail, String phone, String password)
     {
-        ID = String.format("USR_" + "%d", ++countUsers); // id will be set automatically
-    }
-    
-    public User(String name, String mail, String phone, String password)
-    {
-        ID = String.format("USR_" + "%d", ++countUsers); // id will be set automatically
         
-        
-        //need validation
-        
-        
+        ID = id;
         Username = name;
         Mail = mail;
         Phone = phone;
