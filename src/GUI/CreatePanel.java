@@ -1,10 +1,9 @@
 package GUI;
 
-
-import Validations.InvalidEmailAddressException;
 import Users.UserSetCollection;
 import Serialization.*;
 import Validations.InputsValidations;
+import Validations.InvalidEmailAddressException;
 import Validations.InvalidPhoneNumberFormatException;
 import Validations.InvalidUserIDException;
 import Validations.InvalidUserNameException;
@@ -22,14 +21,14 @@ import java.util.InputMismatchException;
  */
 public class CreatePanel extends javax.swing.JPanel {
 
-    private UserSetCollection usersset;
+    private UserSetCollection userssetcollection;
     /**
      * Creates new form CreatePanel
      */
     public CreatePanel() {
         initComponents();
         new InputsValidations();
-        usersset = new UserSetCollection();
+        userssetcollection = new UserSetCollection();
     }
 
     /**
@@ -213,17 +212,17 @@ public class CreatePanel extends javax.swing.JPanel {
             return;
         
         Users.User newuser = new Users.User(textfieldID.getText(), textfieldName.getText(), textfieldMail.getText(), textfieldPhone.getText(), textfieldPassword.getPassword().toString());
-        usersset.addUser(newuser);
-        Serializer.serializeUserSet(usersset.getUserSet());
-        textfieldMessage.setText("USR_" + usersset.getUserSet().size() + " Added Successfully");
+        userssetcollection.addUser(newuser);
+        Serializer.serializeUserSet(userssetcollection.getUserSet());
+        textfieldMessage.setText("USR_" + userssetcollection.getUserSet().size() + " Added Successfully");
     }//GEN-LAST:event_OnClickCreate
 
     private boolean validateInputs()
     {
         try{
-            InputsValidations.validateID(textfieldID.getText());
-            InputsValidations.validateUserName(textfieldName.getText());
-            InputsValidations.validateEmail(textfieldMail.getText());
+            InputsValidations.validateID(textfieldID.getText(), userssetcollection.getUserSet());
+            InputsValidations.validateUserName(textfieldName.getText(), userssetcollection.getUserSet());
+            InputsValidations.validateEmail(textfieldMail.getText(), userssetcollection.getUserSet());
             InputsValidations.validatePhone(textfieldPhone.getText());
             InputsValidations.validatePassword(textfieldPassword.getPassword(), textfieldConfirmPassword.getPassword());
         

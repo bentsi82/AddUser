@@ -7,6 +7,8 @@ package Validations;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Arrays;
+import java.util.*;
+import Users.User;
 
 /**
  *
@@ -15,7 +17,7 @@ import java.util.Arrays;
 public class InputsValidations {
     
     
-    public static void validateID(String field) throws InvalidUserIDException
+    public static void validateID(String field, Set userset) throws InvalidUserIDException
     {
         int numtotal = 0;
         int numtmp;
@@ -35,20 +37,28 @@ public class InputsValidations {
 
         if (field.charAt(0)-48 != 0 || numtotal % 10 != 0)
         {
-            throw new InvalidUserIDException("ID Error: Ilegal ID Mumber");
-        }  
+            throw new InvalidUserIDException("ID Error: Ilegal ID Number");
+        }
+        
+        for (Object obj : userset)
+            if (((User)obj).getID().equalsIgnoreCase(field))
+                throw new InvalidUserIDException("ID Error: ID Already Exists In The System");
     }
     
-    public static void validateUserName(String field) throws InvalidUserNameException
+    public static void validateUserName(String field, Set userset) throws InvalidUserNameException
     {
         if (field.length() == 0)
             throw new InvalidUserNameException("Name Error: Fill In Your Name");
         
         if (field.length() > 15)
             throw new InvalidUserNameException("Name Error: Must Be Under 15 Characters");
+        
+        for (Object obj : userset)
+            if (((User)obj).getUsername().equalsIgnoreCase(field))
+                throw new InvalidUserNameException("Name Error: Name Already Exists In The System");
     }
     
-    public static void validateEmail(String field) throws InvalidEmailAddressException
+    public static void validateEmail(String field, Set userset) throws InvalidEmailAddressException
     {
         final String EMAIL_PATTERN = 
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -59,6 +69,10 @@ public class InputsValidations {
         
         if (!matcher.matches())
             throw new InvalidEmailAddressException("Email Error: Ilegal Mail Format");
+        
+        for (Object obj : userset)
+            if (((User)obj).getMail().equalsIgnoreCase(field))
+                throw new InvalidEmailAddressException("Email Error: Address Already Exists In The System");
     }
     
     public static void validatePhone(String field) throws InvalidPhoneNumberFormatException

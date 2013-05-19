@@ -35,6 +35,7 @@ public class PrintPanel extends javax.swing.JPanel {
         tableUsers = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        tableUsers.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -51,6 +52,7 @@ public class PrintPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tableUsers.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableUsers.setColumnSelectionAllowed(true);
         tableUsers.setEnabled(false);
         tableUsers.setRowHeight(20);
