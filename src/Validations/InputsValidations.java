@@ -77,10 +77,7 @@ public class InputsValidations {
     
     public static void validatePhone(String field) throws InvalidPhoneNumberFormatException
     {
-        if (field.charAt(0)-48 != 0 ||
-            field.charAt(1)-48 != 5 ||
-            field.charAt(2)-48 == 1 ||
-            field.charAt(0)-48 == 5)
+        if (field.isEmpty())
               throw new InvalidPhoneNumberFormatException("Phone Error: Ilegal Number"); 
     }
     
@@ -101,10 +98,10 @@ public class InputsValidations {
         }
         
         if (!smletter || !bgletter || !digit)
-            throw new InvalidUserNameException("Password Error: Must Be At Least 1 Small Letter, 1 Big Letter, 1 Digit");
+            throw new InvalidUserPasswordException("Password Error: Must Be At Least 1 Small Letter, 1 Big Letter, 1 Digit");
         
         if (!Arrays.equals(pass, confirm))
-            throw new InvalidUserNameException("Password Error: Not The Same Password");
+            throw new InvalidUserPasswordException("Password Error: Not The Same Password");
     }
     
 }

@@ -3,12 +3,6 @@ package GUI;
 import Users.UserSetCollection;
 import Serialization.*;
 import Validations.InputsValidations;
-import Validations.InvalidEmailAddressException;
-import Validations.InvalidPhoneNumberFormatException;
-import Validations.InvalidUserIDException;
-import Validations.InvalidUserNameException;
-import Validations.InvalidUserPasswordException;
-import java.util.InputMismatchException;
 
 /*
  * To change this template, choose Tools | Templates
@@ -53,10 +47,12 @@ public class CreatePanel extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         textfieldPassword = new javax.swing.JPasswordField();
         textfieldConfirmPassword = new javax.swing.JPasswordField();
-        textfieldPhone = new javax.swing.JFormattedTextField();
         textfieldMessage = new javax.swing.JTextField();
         textfieldMail = new javax.swing.JTextField();
         textfieldID = new javax.swing.JFormattedTextField();
+        comboBoxAreacode = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        textfieldPhone = new javax.swing.JFormattedTextField();
 
         setName("CreatePanel"); // NOI18N
 
@@ -102,17 +98,12 @@ public class CreatePanel extends javax.swing.JPanel {
         textfieldConfirmPassword.setToolTipText("");
         textfieldConfirmPassword.setName(""); // NOI18N
 
-        try {
-            textfieldPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("### - #######")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        textfieldPhone.setToolTipText("");
-        textfieldPhone.setName(""); // NOI18N
-
         textfieldMessage.setEditable(false);
         textfieldMessage.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         textfieldMessage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textfieldMessage.setToolTipText("");
+        textfieldMessage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51)));
+        textfieldMessage.setName(""); // NOI18N
 
         textfieldMail.setName(""); // NOI18N
 
@@ -123,6 +114,19 @@ public class CreatePanel extends javax.swing.JPanel {
         }
         textfieldID.setToolTipText("");
         textfieldID.setName(""); // NOI18N
+
+        comboBoxAreacode.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        comboBoxAreacode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02", "03", "04", "08", "09", "050", "052", "053", "054", "057", "058", "077" }));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("-");
+
+        try {
+            textfieldPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,30 +139,35 @@ public class CreatePanel extends javax.swing.JPanel {
                     .addComponent(jSeparator2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(textfieldPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(textfieldName)
-                            .addComponent(textfieldMail)
-                            .addComponent(textfieldID)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textfieldConfirmPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textfieldPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textfieldConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(textfieldPassword)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textfieldMessage, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(textfieldMessage, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addGap(128, 128, 128)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(comboBoxAreacode, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textfieldPhone))
+                            .addComponent(textfieldID, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textfieldMail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textfieldName, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -169,20 +178,22 @@ public class CreatePanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(textfieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(textfieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textfieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(textfieldMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(textfieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(textfieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(comboBoxAreacode, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(textfieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,7 +201,7 @@ public class CreatePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(textfieldConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(textfieldMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +222,7 @@ public class CreatePanel extends javax.swing.JPanel {
         if (!validateInputs())
             return;
         
-        Users.User newuser = new Users.User(textfieldID.getText(), textfieldName.getText(), textfieldMail.getText(), textfieldPhone.getText(), textfieldPassword.getPassword().toString());
+        Users.User newuser = new Users.User(textfieldID.getText(), textfieldName.getText(), textfieldMail.getText(), comboBoxAreacode.getSelectedItem().toString()+textfieldPhone.getText(), textfieldPassword.getPassword().toString());
         userssetcollection.addUser(newuser);
         Serializer.serializeUserSet(userssetcollection.getUserSet());
         textfieldMessage.setText("USR_" + userssetcollection.getUserSet().size() + " Added Successfully");
@@ -226,7 +237,7 @@ public class CreatePanel extends javax.swing.JPanel {
             InputsValidations.validatePhone(textfieldPhone.getText());
             InputsValidations.validatePassword(textfieldPassword.getPassword(), textfieldConfirmPassword.getPassword());
         
-        }catch(InputMismatchException ex){
+        }catch(Exception ex){
             textfieldMessage.setText(ex.getMessage());
             return false;
         }
@@ -234,6 +245,7 @@ public class CreatePanel extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox comboBoxAreacode;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -242,6 +254,7 @@ public class CreatePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPasswordField textfieldConfirmPassword;

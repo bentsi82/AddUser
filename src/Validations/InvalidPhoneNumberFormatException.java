@@ -4,13 +4,12 @@
  */
 package Validations;
 
-import java.util.InputMismatchException;
 
 /**
  *
  * @author Bentsi
  */
-public class InvalidPhoneNumberFormatException extends InputMismatchException{
+public class InvalidPhoneNumberFormatException extends Exception{
     
     private String error;
     

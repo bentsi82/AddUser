@@ -3,13 +3,12 @@
  * and open the template in the editor.
  */
 package Validations;
-import java.util.InputMismatchException;
 
 /**
  *
  * @author Bentsi
  */
-public class InvalidEmailAddressException extends InputMismatchException {
+public class InvalidEmailAddressException extends Exception {
     
     private String error;
     

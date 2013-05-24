@@ -4,13 +4,12 @@
  */
 package Validations;
 
-import java.util.InputMismatchException;
 
 /**
  *
  * @author Bentsi
  */
-public class InvalidUserIDException extends InputMismatchException {
+public class InvalidUserIDException extends Exception {
     
     private String error;
     
